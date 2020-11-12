@@ -24,18 +24,22 @@
 						<span class="lnr lnr-user"></span>
 						{% csrf_token %}
 						<input type="text" class="form-control" placeholder="Full Name" name="name">
+						<h5 style="color:red;text-align:right">{{e1}}</h5>
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-phone-handset"></span>
 						<input type="text" class="form-control" placeholder="Phone Number" name="phn">
+						<h5 style="color:red;text-align:right">{{e2}}</h5>
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
-						<input type="text" class="form-control" placeholder="Mail" name="mail">
+						<input type="text" class="form-control" placeholder= "Mail" name="mail">
+						<h5 style="color:red;text-align:right">{{e3}}</h5>
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-lock"></span>
 						<input type="password" class="form-control" placeholder="Password" name="pwd">
+						<h5 style="color:red;text-align:right">{{e4}}</h5>
 					</div>
 					<button>
 						<span>Register</span>

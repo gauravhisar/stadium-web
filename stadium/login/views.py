@@ -99,7 +99,7 @@ def records(request):
 
 
 def signup(request):
-    return render(request, 'signup_index.html',{'welcome1':'New Account ?'})
+    return render(request, 'signup_index.html',{'welcome1':'New Account ?', 'e1': "", 'e2': "", 'e3': "", 'e4': ""})
 
 
 def store_user(request):
@@ -107,13 +107,35 @@ def store_user(request):
     email = request.POST['mail']
     phn = request.POST['phn']
     pwd = request.POST['pwd']
+    e1 = ""
+    e2 = ""
+    e3 = ""
+    e4 = ""
+    flag = 0
+
+    if len(name) == 0:
+        flag = 1
+        e1 = "Enter Your Name"
+    if len(phn) < 10:
+        flag = 1
+        e2 = "Enter Valid Phone Number"
+    if len(email) == 0:
+        flag = 1
+        e3 = "Enter Valid Email"
+    if len(pwd) < 8:
+        flag = 1
+        e4 = "Password should be greater than 8 chars"
+    if flag == 1:
+        return render(request, 'signup_index.html',
+                      {'welcome1': 'New Account ?', 'e1': e1, 'e2': e2, 'e3': e3, 'e4': e4})
+
     cursor.execute("select email from customer")
     m=cursor.fetchall()
     mails=[]
-    for i in  range(len(m)):
+    for i in range(len(m)):
          mails.append(str(m[i][0]))
     if email in mails:
-        return render(request,'signup_index.html',{'welcome1':'User already exist. Please login/enter another email.'})
+        return render(request, 'signup_index.html', {'welcome1': 'User already exist. Please login with other email', 'e1': "", 'e2': "", 'e3': "", 'e4': ""})
     else:
         cursor.execute("insert into customer  (`Name`,`password`,email,contact_no) values (%s,%s,%s,%s)", (name, hashlib.md5(pwd.encode()).hexdigest(), email, phn))
         connection.commit()
