@@ -1,12 +1,11 @@
 
-drop database stadium;
 create schema stadium;
 use stadium;
 
 create table Employee(
 emp_id char(9),
 `Name` varchar(30) NOT NULL,
-Address varchar(50),
+Address varchar(100),
 Sex char(1),
 Salary int,
 contact_no char(11) NOT NULL,
@@ -48,9 +47,9 @@ constraint fk_uses1 foreign key(eq_id) references Equipment(eq_id),
 constraint fk_uses2 foreign key(Dno) references Department(Dnumber));
 
 create table Customer(
-cust_id char(5),
+cust_id int auto_increment,
 `Name` varchar(30) NOT NULL,
-`password` varchar(30) NOT NULL,
+`password` varchar(50) NOT NULL,
 email varchar(50) NOT NULL,
 contact_no char(11) NOT NULL,
 constraint pk_cust primary key(cust_id));
@@ -61,14 +60,14 @@ ev_name varchar(30),
 `Date` Date,
 `Time` Time,
 seats_req int,
-organised_by char(5),
+organised_by int,
 price int NOT NULL,
 constraint pk_event primary key(ev_id),
 constraint fk_event foreign key(organised_by) references customer(cust_id));
 
 
 create table Attends(
-cust_id char(5),
+cust_id int,
 ev_id char(5),
 seat_id int,
 constraint pk_attends primary key(cust_id,ev_id,seat_id),
@@ -91,7 +90,7 @@ values
 ('898989898','Pranav Arya','D-111-D Shakarpur, Delhi 110092','M',65000,'09865722890','cool.pranavarya@gmail.com','1990-08-15',NULL),
 
 #00001
-('619753248','Neeti Rani','B-201 Ganesh nagar, Delhi 110092','F',52000,'07189325681','happy.neeti@gmail.com','1985-06-11',NULL),
+('619753248','Neeti Rani','B-201 Ganesh nagar,Pandav Nagar complex,Delhi 110092','F',52000,'07189325681','happy.neeti@gmail.com','1985-06-11',NULL),
 
 #00002
 ('159874623','Anuj Sharma','B-16 Sanjay gram, Gurugram, Haryana 122001','M',50000,'09562487512','anuj_sharma1972@gmail.com','1979-02-25',NULL),
@@ -172,18 +171,20 @@ set Dno='00006'
 where emp_id='349526888';
 
 
-insert into Customer
+insert into Customer(`Name`,`password`,email,contact_no)
 values
-('ab856','Amish Bibhu','amish@bookseat','amish2546b@gmail.com','09526314752'),
-('ns149','Nimisha Sinha','nimisha98467','nimis001@gmail.com','08527416390'),
-('bj222','Bibhor Jaiswal','BiBhOrJ@123','bjBibhor@gmail.com','09635418723'),
-('rn496','Ritika Nayan','ritika.n123','ritu01ritika@gmail.com','08621547930'),
-('hk506','Himanshu Kumar','logmeinnow0123','himanshu082@gmail.com','09637526914'),
-('yk425','Yashwant Kumar','hiitsyashwant46','yash.kumar28@gmail.com','07531249652'),
-('ps185','Piyush Srivastava','123789@piyush','piyushS123789@gmail.com','07218541623'),
-('nr464','Nidhi Raj','nidhi@2000raj','raj.nidhi46@gmail.com','08651249532'),
-('as198','Atul Sinha','5479atulS','a.t.u.l.s@gmail.com','08116325479'),
-('sk696','Saurav Kumar','skpassword555','sauravK555@gmail.com','08371524963');
+('Amish Bibhu','amish@bookseat','amish2546b@gmail.com','09526314752'),
+('Nimisha Sinha','nimisha98467','nimis001@gmail.com','08527416390'),
+('Bibhor Jaiswal','BiBhOrJ@123','bjBibhor@gmail.com','09635418723'),
+('Ritika Nayan','ritika.n123','ritu01ritika@gmail.com','08621547930'),
+('Himanshu Kumar','logmeinnow0123','himanshu082@gmail.com','09637526914'),
+('Yashwant Kumar','hiitsyashwant46','yash.kumar28@gmail.com','07531249652'),
+('Piyush Srivastava','123789@piyush','piyushS123789@gmail.com','07218541623'),
+('Nidhi Raj','nidhi@2000raj','raj.nidhi46@gmail.com','08651249532'),
+('Atul Sinha','5479atulS','a.t.u.l.s@gmail.com','08116325479'),
+('Saurav Kumar','skpassword555','sauravK555@gmail.com','08371524963');
+
+
 
 insert into Equipment
 values
@@ -208,9 +209,9 @@ values
 
 insert into `Event`
 values
-('ev001','UT Fan Fest','2021-01-08','13:30',2000,'ab856',1000),
-('ev002','UP\'s Got Talent','2021-02-17','17:00',1000,'ps185',800),
-('ev003','Dhanji Trophy','2021-03-10','08:00',10000,'as198',2000);
+('ev001','UT Fan Fest','2021-01-08','13:30',2000,7,1000),
+('ev002','UP\'s Got Talent','2021-02-17','17:00',1000,6,800),
+('ev003','Dhanji Trophy','2021-03-10','08:00',10000,5,2000);
 
 insert into Uses
 values
@@ -225,15 +226,15 @@ values
 
 insert into Attends
 values
-('ab856','ev001',1),
-('ns149','ev001',2),
-('bj222','ev001',3),
-('rn496','ev002',1),
-('hk506','ev002',2),
-('yk425','ev002',3),
-('yk425','ev003',1),
-('nr464','ev003',2),
-('as198','ev003',3);
+(1,'ev001',1),
+(2,'ev001',2),
+(3,'ev001',3),
+(4,'ev002',1),
+(5,'ev002',2),
+(1,'ev002',3),
+(6,'ev003',1),
+(7,'ev003',2),
+(2,'ev003',3);
 
 
 

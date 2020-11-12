@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html xmlns:text-align="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="{% static 'fonts1/linearicons/style.css' %}">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'css1/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="{% static 'images1/image-1.png' %}" alt="" class="image-1">
+				<form action="verify_user" method='POST'>
+					<h4 style="color:red;">{{welcome1}}</h4>
+					<h3>{{welcome2}}</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						{% csrf_token %}
+						<input type="text" class="form-control" placeholder="Mail" name="mail">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Password" name="pwd">
+					</div>
+					<button>
+						<span>SignIn</span>
+					</button>
+				</form>
+				<img src="{% static 'images1/image-2.png' %}" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="{% static 'js1/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'js1/main.js' %}"></script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
