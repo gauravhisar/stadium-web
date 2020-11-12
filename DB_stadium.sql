@@ -1,4 +1,3 @@
-
 create schema stadium;
 use stadium;
 
@@ -173,16 +172,16 @@ where emp_id='349526888';
 
 insert into Customer(`Name`,`password`,email,contact_no)
 values
-('Amish Bibhu','amish@bookseat','amish2546b@gmail.com','09526314752'),
-('Nimisha Sinha','nimisha98467','nimis001@gmail.com','08527416390'),
-('Bibhor Jaiswal','BiBhOrJ@123','bjBibhor@gmail.com','09635418723'),
-('Ritika Nayan','ritika.n123','ritu01ritika@gmail.com','08621547930'),
-('Himanshu Kumar','logmeinnow0123','himanshu082@gmail.com','09637526914'),
-('Yashwant Kumar','hiitsyashwant46','yash.kumar28@gmail.com','07531249652'),
-('Piyush Srivastava','123789@piyush','piyushS123789@gmail.com','07218541623'),
-('Nidhi Raj','nidhi@2000raj','raj.nidhi46@gmail.com','08651249532'),
-('Atul Sinha','5479atulS','a.t.u.l.s@gmail.com','08116325479'),
-('Saurav Kumar','skpassword555','sauravK555@gmail.com','08371524963');
+('Amish Bibhu',md5('amish@bookseat'),'amish2546b@gmail.com','09526314752'),
+('Nimisha Sinha',md5('nimisha98467'),'nimis001@gmail.com','08527416390'),
+('Bibhor Jaiswal',md5('BiBhOrJ@123'),'bjBibhor@gmail.com','09635418723'),
+('Ritika Nayan',md5('ritika.n123'),'ritu01ritika@gmail.com','08621547930'),
+('Himanshu Kumar',md5('logmeinnow0123'),'himanshu082@gmail.com','09637526914'),
+('Yashwant Kumar',md5('hiitsyashwant46'),'yash.kumar28@gmail.com','07531249652'),
+('Piyush Srivastava',md5('123789@piyush'),'piyushS123789@gmail.com','07218541623'),
+('Nidhi Raj',md5('nidhi@2000raj'),'raj.nidhi46@gmail.com','08651249532'),
+('Atul Sinha',md5('5479atulS'),'a.t.u.l.s@gmail.com','08116325479'),
+('Saurav Kumar',md5('skpassword555'),'sauravK555@gmail.com','08371524963');
 
 
 

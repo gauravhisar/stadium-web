@@ -21,7 +21,7 @@ text-transform: uppercase;
 	color: #f74d65;
 }
 header{
-	background: url('/static/images/header_bg.jpg');
+	background-color: rgba(220,149,112, 0.25);
 	background-size: cover;
 	background-repeat: no-repeat;
 }

@@ -4,3 +4,7 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request,'index.html')
+
+def index_login(request):
+
+    return render(request,'index_login.html')
