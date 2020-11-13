@@ -9,3 +9,4 @@ class event:
     seats_req=None
     org_by=None
     price=None
+    seat=None

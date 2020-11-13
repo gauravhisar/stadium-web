@@ -47,7 +47,7 @@ def verify_user(request):
     cursor.execute("select name  from customer where email=%s",(email,))
     name=str(cursor.fetchall()[0][0])
     for x in result:
-        if x[0] == email and x[1] ==hashlib.md5(pwd.encode()).hexdigest():
+        if x[1] ==hashlib.md5(pwd.encode()).hexdigest():
             return render(request, 'index_login.html', {'name': name})  #the homepage again with the username specified
     else:
         return render(request, 'login.html', {'welcome1': 'Incorrect Email or Password', 'welcome2': 'User Login'})
@@ -57,10 +57,10 @@ def verify_user(request):
 def records(request):
 
     #SQL QUERY TO FETCH RECORDS OF  A PARTICULAR CUSTOMER
-    cursor.execute('''select *
-               from event e
-               where e.ev_id in
-               (select a.ev_id
+    cursor.execute('''select distinct (e.ev_id),e.ev_name,e.date,e.time,e.price,a.seat_id
+               from event e,attends a
+               where (e.ev_id ,a.seat_id) in
+               (select a.ev_id,a.seat_id
                from attends a
                where a.cust_id in(
                (select c.cust_id
@@ -88,7 +88,8 @@ def records(request):
         objects[i].ev_name =e[i][1]
         objects[i].date =e[i][2]
         objects[i].time = e[i][3]
-        objects[i].price=e[i][6]
+        objects[i].price=e[i][4]
+        objects[i].seat=e[i][5]
 
     events=[]
     for i in range(len(objects)):
@@ -104,9 +105,11 @@ def signup(request):
 
 def store_user(request):
     name = request.POST['name']
-    email = request.POST['mail']
+    global email 
+    email= request.POST['mail']
     phn = request.POST['phn']
-    pwd = request.POST['pwd']
+    global pwd 
+    pwd= request.POST['pwd']
     e1 = ""
     e2 = ""
     e3 = ""
