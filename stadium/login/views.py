@@ -15,7 +15,7 @@ import sqlite3
 email = None
 pwd = None
 eves = None
-
+max_seats = 6  # Number of seats in the stadium
 
 try:
     connection = mysql.connector.connect(host='localhost',
@@ -183,7 +183,7 @@ def contact(request):
 def select_event(request):
     return render(request, 'select_event.html', {'events': eves, 'welcome2': 'Seat Booking'})
 
-
+max_seat_id = None
 def login_book(request):
     global email
     email = request.POST['mail']
@@ -193,6 +193,7 @@ def login_book(request):
     sel_event = request.POST['selected_event']
     global num_seats
     num_seats = (request.POST['NumberOfSeats'])
+    global max_seat_id
 
     book_event = None
     for eve in eves:
@@ -232,6 +233,20 @@ def login_book(request):
                 return render(request, 'select_event.html', {'welcome1': '', 'welcome2': 'Seat Booking',
                                                              'welcome3': 'Enter Number of Seats', 'events': eves})
             num_seats = int(num_seats)
+            # find max_seat_id first
+            cursor.execute(
+                "select max(seat_id) from attends where ev_id = (select ev_id from event where ev_name = %s)",
+                (sel_event,))
+            max_seat_id = cursor.fetchall()[0][0]
+            if max_seats - max_seat_id == 0:
+                return render(request, 'select_event.html',
+                              {'welcome1': 'No Seats Available for {}'.format(sel_event),
+                               'welcome2': 'Seat Booking',
+                               'welcome3': '', 'events': eves})
+
+            if max_seat_id + num_seats > max_seats:
+                return render(request, 'select_event.html', {'welcome1': 'Only {} Seats Available for {}'.format(max_seats - max_seat_id, sel_event), 'welcome2': 'Seat Booking',
+                                                             'welcome3': '', 'events': eves})
             return render(request, 'payment.html',
                           {'name': name,
                            'seats': num_seats,
@@ -253,9 +268,6 @@ def booked(request):
         if eve.ev_name == sel_event:
             book_event = eve
 
-    # find seatid first
-    cursor.execute("select max(seat_id) from attends where ev_id = (select ev_id from event where ev_name = %s)", (sel_event,))
-    seat_id = cursor.fetchall()[0][0]
 
     cursor.execute("select cust_id from customer where email = %s", (email,))
     cust_id = cursor.fetchall()[0][0]
@@ -263,11 +275,11 @@ def booked(request):
     booked_events = []
     for i in range(num_seats):
         booked_events = booked_events + [copy.copy(book_event)]
-        booked_events[i].seat = seat_id+i+1
+        booked_events[i].seat = max_seat_id+i+1
 
     for i in range(num_seats):
         cursor.execute("insert into attends  (`cust_id`,`ev_id`,`seat_id`) values (%s,%s,%s)",
-                       (cust_id, booked_events[i].ev_id, seat_id + i + 1))
+                       (cust_id, booked_events[i].ev_id, max_seat_id + i + 1))
 
     connection.commit()
 
