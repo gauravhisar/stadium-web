@@ -75,8 +75,8 @@
 	                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                  <ul class="nav navbar-nav navbar-right">
 	                    <li><a href="/">Home</a></li>
-	                    <li><a href="#">Events</a></li>
-                      <li><a href="#CONTACT">Contact</a></li>
+	                    <li><a href="events">Events</a></li>
+                      <li><a href="contact">Contact</a></li>
                       <li><a href="#">Hello , {{name}}.</a></li>
                       <a class="navbar-brand" href="#"><img src="{% static 'images/person.jpg' %}" alt=""></a>
 	                  </ul>
@@ -87,11 +87,11 @@
               <table class="content-table">
                 <thead>
                   <tr>
-                    <th>Event ID</th>
+                    <!--<th>Event ID</th>-->
                     <th>Event Name</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Price</th>
+                    <th>Paid</th>
                     <th>Seat No.</th>
                   </tr>
                 </thead>
@@ -100,11 +100,11 @@
     
       <tbody>
         <tr>
-          <td><b style="color:black">{{eve.ev_id}}</b></td>
+          <!--<td><b style="color:black">{{eve.ev_id}}</b></td>-->
           <td><b style="color:black">{{eve.ev_name}}</b></td>
           <td><b style="color:black">{{eve.date}}</b></td>
           <td><b style="color:black">{{eve.time}}</b></td>
-          <td><b style="color:black">Rs. {{eve.price}}</b></td>
+          <td><b style="color:black">₹{{eve.price}}</b></td>
           <td><b style="color:black">{{eve.seat}}</b></td>
         </tr>
       </tbody>
@@ -112,7 +112,7 @@
 
               {% endfor %}
 
-             
+
 	               
 	        </div>  
 	    </section>         

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/preloader.css' %}" type="text/css" media="screen, print"/>
 
     <!-- Icon Font-->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylerec.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
     <!-- Animate CSS-->
@@ -32,7 +32,9 @@
 
 
     <!-- Style -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/stylerec.css' %}" rel="stylesheet">
+     <!-- Style -->
+     <link href="{% static 'css/styled.css' %}" rel="stylesheet">
 
     <!-- Responsive CSS -->
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
@@ -72,42 +74,52 @@
 	                <!-- Collect the nav links, forms, and other content for toggling -->
 	                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                  <ul class="nav navbar-nav navbar-right">
-	                    <li><a href="/">Home</a></li>
-	                    <li><a href="login/signin">Login</a></li>
-	                    <li><a href="login/signup">Sign up</a></li>
-	                    <li><a href="login/events">Events</a></li>
-						<li><a href="login/contact">Contact</a></li>
+                      <li><a href="#">Hello , {{name}}.</a></li>
+                      <a class="navbar-brand" href="#"><img src="{% static 'images/person.jpg' %}" alt=""></a>
 	                  </ul>
 	                </div><!-- /.navbar-collapse -->
 	              </div><!-- /.container -->
-	            </nav> 
+              </nav> 
 
-	            <div class="container">
-	                <div class="row">
-	                    <div class="col-md-12 text-center">
-	                        <div class="home_text wow fadeInUp animated">
-	                            <h2>Welcome !</h2>
-	                            <p>Book Your funtime with us.</p>
-	                            <img src="{% static 'images/shape.png' %}" alt="">                        
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
+              <table class="content-table">
+                <thead>
+                  <tr>
+                    <!--<th>Event ID</th>-->
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Seats booked</th>
+                    <th>Grand Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+          
+              
+    
+        <tbody>
+            <tr>
+            <td><b style="color:black">{{evname}}</b></td>
+            <td><b style="color:black">{{date}}</b></td>
+            <td><b style="color:black">{{time}}</b></td>
+            <td><b style="color:black">{{seats}}</b></td>
+            <td><b style="color:black">₹{{total}}</b></td>
+            <td><a href="booked">proceed to pay</a></td>
+            </tr>
+        
+        </tbody>
+ 
 
+              
+
+              
 	               
 	        </div>  
 	    </section>         
     </header>
 
-<footer class="footer">
-<p style="color:#2A3736"><h3><b> Designed and created by :-</b><h3> </p>
-<h5>Gourav Bansal</h5>
-<h5>Vardan Agarwal</h5>
-<h5>Kishan Srivastava</h5>
-<h3 style="color:#2A3736"><b>Guided by:-</b></h3><h5> Dr. Shelly Sachdeva. (HOD CSE department, NIT Delhi)</h5>
-</li>
-</footer>
- 
+
+    
+
 
 
 
