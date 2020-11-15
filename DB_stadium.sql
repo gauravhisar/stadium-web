@@ -7,7 +7,7 @@ emp_id char(9),
 Address varchar(100),
 Sex char(1),
 Salary int,
-contact_no char(11) NOT NULL,
+contact_no varchar(11) NOT NULL,
 email varchar(50) NOT NULL,
 DOB Date,
 Dno char(5),
@@ -50,7 +50,7 @@ cust_id int auto_increment,
 `Name` varchar(30) NOT NULL,
 `password` varchar(50) NOT NULL,
 email varchar(50) NOT NULL,
-contact_no char(11) NOT NULL,
+contact_no varchar(11) NOT NULL,
 constraint pk_cust primary key(cust_id));
 
 create table `Event`(
@@ -85,7 +85,7 @@ values
 ('526341789','Shantanu Kumar','D-05 Sector 10 Dwarka, Delhi 110075','M',70000,'09462132531','shantanu007@gmail.com','1980-05-16',NULL),
 ('169874643','Amit Tripathi','C-20 , Palam, Delhi 110045','M',45000,'08562127792','amittpt21@gmail.com','1986-12-21',NULL),
 ('125841643','Aanya Singh','A-01  Malviya Nagar, Delhi 110017','F',58000,'08521627222','anu_aanya10@gmail.com','1982-10-04',NULL),
-('542639856','Sharad Kumar Srivastava','C-06 Sector 10 Dwarka,Delhi 11075','M',60000,'0916328316','skssharad@gmail.com','1988-10-02',NULL),
+('542639856','Sharad Kumar Srivastava','C-06 Sector 10 Dwarka,Delhi 11075','M',60000,'09163283165','skssharad@gmail.com','1988-10-02',NULL),
 ('898989898','Pranav Arya','D-111-D Shakarpur, Delhi 110092','M',65000,'09865722890','cool.pranavarya@gmail.com','1990-08-15',NULL),
 
 #00001
@@ -234,6 +234,3 @@ values
 (6,'ev003',1),
 (7,'ev003',2),
 (2,'ev003',3);
-
-
-

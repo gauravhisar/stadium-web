@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>STADIUM</title>
+    <title>Contact</title>
     <!-- Google Font -->
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -68,7 +68,7 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                  </button>
-	                  <a class="navbar-brand" href="#"><img src="{% static 'images/logo.jpg' %}" alt=""></a>
+	                  <a class="navbar-brand" ><img src="{% static 'images/logo.jpg' %}" alt=""></a>
 	                </div>
 
 	                <!-- Collect the nav links, forms, and other content for toggling -->
@@ -87,50 +87,28 @@
                 <thead>
                   <tr>
                     <th>Office</th>
+                    <th>Manager Name</th>
                     <th>Phone</th>
                     <th>Mail</th>
                   </tr>
                 </thead>
           
+                {% for dept in depts %}
+    
+                <tbody>
+                  <tr>
+                    <td><b style="color:black">{{dept.Dname}}</b></td>
+                    <td><b style="color:black">{{dept.mgrname}}</b></td>
+                    <td><b style="color:black">{{dept.phone}}</b></td>
+                    <td><b style="color:black">{{dept.mail}}</b></td>
+                  </tr>
+                </tbody>
+           
+          
+                        {% endfor %}
               
     
-        <tbody>
-            <tr>
-            <td><b style="color:black">Chairman of Cricket Club</b></td>
-            <td><b style="color:black">+910112346543</b></td>
-            <td><a href="#mail_id">mail us</a></td>
-            </tr>
-            <tr>
-                <td><b style="color:black">Office of Administration Dept.</b></td>
-                <td><b style="color:black">+910113564091</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-            </tr>
-            <tr>
-                <td><b style="color:black">Office of Sales Dept.</b></td>
-                <td><b style="color:black">+910113564092</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-            </tr>
-            <tr>
-                <td><b style="color:black">Office of Gardening and Plumbing Dept.</b></td>
-                <td><b style="color:black">+910113564093</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-            </tr>
-            <tr>
-                <td><b style="color:black">Office of Housekeeping Dept.</b></td>
-                <td><b style="color:black">+910113564094</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-            </tr>
-            <tr>
-                <td><b style="color:black">Office of Marketing Dept.</b></td>
-                <td><b style="color:black">+910113564095</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-                </tr>
-            <tr>
-                <td><b style="color:black">Office of Security Dept.</b></td>
-                <td><b style="color:black">+910113564096</b></td>
-                <td><a href="#mail_id">mail us</a></td>
-                </tr>
-        
+       
         </tbody>
  
 

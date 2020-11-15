@@ -10,3 +10,9 @@ class event:
     org_by=None
     price=None
     seat=None
+
+class department:
+    Dname=None
+    mgrname=None
+    phone=None
+    mail=None
