@@ -82,6 +82,8 @@ def store_user(request):
         e3 = "Enter Valid Email"
     if len(pwd) < 8:
         flag = 1
+
+
         e4 = "Password should be greater than 8 characters"
     if flag == 1:
         return render(request, 'signup_index.html',
