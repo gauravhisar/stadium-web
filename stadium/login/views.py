@@ -12,7 +12,7 @@ import hashlib
 email=None
 name=None
 eves = None
-max_seats = 6  # Number of seats in the stadium
+max_seats = None  # Number of seats in the stadium
 max_seat_id = None
 
 try:
@@ -82,8 +82,6 @@ def store_user(request):
         e3 = "Enter Valid Email"
     if len(pwd) < 8:
         flag = 1
-
-
         e4 = "Password should be greater than 8 characters"
     if flag == 1:
         return render(request, 'signup_index.html',
@@ -304,6 +302,9 @@ def login_book(request):
     cursor.execute("select `password` from customer where email=%s",(email,))
     result = str(cursor.fetchall()[0][0])
 
+    cursor.execute("select seats_req from `event` where ev_name=%s",(sel_event,))
+    max_seats=int(cursor.fetchall()[0][0])
+
     if result ==hashlib.md5(pwd.encode()).hexdigest():
         cursor.execute("select name  from customer where email=%s",(email,))
         name=str(cursor.fetchall()[0][0])
@@ -321,8 +322,8 @@ def login_book(request):
         cursor.execute(
                 "select max(seat_id) from attends where ev_id = (select ev_id from event where ev_name = %s)",
                 (sel_event,))
+        max_seat_id = int(cursor.fetchall()[0][0])
 
-        max_seat_id = cursor.fetchall()[0][0]
         if max_seats - max_seat_id == 0:
             return render(request, 'select_event.html',
                               {'welcome1': 'No Seats Available for {}'.format(sel_event),
